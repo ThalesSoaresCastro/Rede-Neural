@@ -49,7 +49,7 @@ class Matrix{
     static map(A, func){
         let matrix = new Matrix(A.rows, A.cols)
         
-        matrix.data = matrix.data.map((arr, i) =>{
+        matrix.data = A.data.map((arr, i) =>{
             return arr.map((num, j)=>{
                 return func(num, i, j)
             })
