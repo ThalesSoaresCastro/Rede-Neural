@@ -31,11 +31,12 @@ class Matrix{
     randomizar(){
         this.map((elm, i, j)=>{
             return Math.random() * 2 - 1
+            //return Math.floor(Math.random()*10)
         })
     }
 
     static map(A, func){
-        let matrix = new Matrix(A.rows, B.rows)
+        let matrix = new Matrix(A.rows, B.cols)
         
         matrix.data = matrix.data.map((arr, i) =>{
             return arr.map((num, j)=>{
@@ -55,6 +56,48 @@ class Matrix{
         })
         return this
     }
+
+    //faz a transposição da matriz...
+    static transpose(A){
+        var matrix =  new Matrix(A.cols, A.rows)
+        matrix.map((num, i, j)=>{
+            return A.data[j][i]
+        })
+        return matrix
+    }
+
+    //OPERAÇÕES ESTATICAS MATRIZ X ESCALAR
+
+    static escalar_multiplica(A, escalar){
+        var mat = new Matrix(A.rows, A.cols)
+
+        mat.map((elemento, i , j)=>{
+            return A.data[i][j] * escalar
+        })
+        return mat
+    }
+
+
+
+    //OPERAÇÕES ESTATICAS MATRIZ X MATRIZ
+    static hadamard(A, B){
+        var mat = new Matrix(A.rows, A.cols)
+
+        mat.map((elemento, i , j)=>{
+            return A.data[i][j] * B.data[i][j]
+        })
+        return mat
+    }
+
+    static sub(A, B){
+        var mat = new Matrix(A.rows, A.cols)
+
+        mat.map((elemento, i , j)=>{
+            return A.data[i][j] - B.data[i][j]
+        })
+        return mat
+    }
+
 
     //função para adição das matrizes...
     static add(A, B){
