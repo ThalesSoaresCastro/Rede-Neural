@@ -24,6 +24,17 @@ class Matrix{
         return mat
     }
 
+    static MatrixToArray(obj){
+        let arr = []
+
+        obj.map((elm, i, j) => {
+            arr.push(elm)
+        })
+
+        return arr
+    }
+
+
     print(){
         console.table(this.data)
     }
@@ -36,7 +47,7 @@ class Matrix{
     }
 
     static map(A, func){
-        let matrix = new Matrix(A.rows, B.cols)
+        let matrix = new Matrix(A.rows, A.cols)
         
         matrix.data = matrix.data.map((arr, i) =>{
             return arr.map((num, j)=>{
